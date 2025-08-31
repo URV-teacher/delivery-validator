@@ -1,0 +1,10 @@
+
+services:
+  validator:
+    build: .
+    image: json-validator:local
+    # Mount your local data folder that contains schema.json and data.json
+    volumes:
+      - ./data:/data:ro
+    # Example command; override as needed
+    command: ["--schema", "/data/schema.json", "--json", "/data/input.json", "-v"]
