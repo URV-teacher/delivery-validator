@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Delivery Information",
+  "type": "object",
+  "properties": {
+    "student": {
+      "type": "object",
+      "properties": {
+        "dni": {
+          "type": "string",
+          "description": "National ID of the student"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Institutional email of the student"
+        },
+        "name": {
+          "type": "string",
+          "description": "First name of the student"
+        },
+        "surname": {
+          "type": "string",
+          "description": "First surname of the student"
+        },
+        "second_surname": {
+          "type": "string",
+          "description": "Second surname of the student"
+        },
+        "orcid": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{4}-\\d{4}-\\d{4}$",
+          "description": "Optional ORCID identifier"
+        }
+      },
+      "required": ["dni", "email", "name", "surname"]
+    },
+    "delivery": {
+      "type": "object",
+      "properties": {
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$",
+          "description": "Git commit SHA identifier of the delivered code"
+        },
+        "phase": {
+          "type": "string",
+          "enum": ["1", "2"],
+          "description": "Phase of the exercise (1 or 2)"
+        },
+        "exercise": {
+          "type": "string",
+          "description": "Identifier of the exercise being delivered"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the delivery"
+        }
+      },
+      "required": ["commit", "phase", "exercise"]
+    }
+  },
+  "required": ["student", "delivery"]
+}
