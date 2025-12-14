@@ -18,12 +18,12 @@ def validate_json_file(file_path: str, schema: dict) -> bool:
     errors = sorted(validator.iter_errors(data), key=lambda e: e.path)
 
     if errors:
-        print(f"❌ Validation failed for {file_path}:")
+        print(f"Validation failed for {file_path}:")
         for error in errors:
             print(f" - {list(error.path)}: {error.message}")
         return False
     else:
-        print(f"✅ {file_path} is valid")
+        print(f"{file_path} is valid")
         return True
 
 
