@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Computers Practical Exercise Delivery Information",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "First name of the student doing this delivery."
+    },
+    "surname": {
+      "type": "string",
+      "description": "Surname or surnames of the student doing this delivery."
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "pattern": "@estudiants.urv.cat$",
+      "description": "Institutional URV email of the student doing this delivery. e.g. fulano.detal@estudiants.urv.cat"
+    },
+    "repo": {
+      "type": "string",
+      "pattern": "^comp_[0-9]{1,2}$",
+      "description": "Name of the git repository of the delivery, previously assigned to the delivering student, in the DEIM git servers. e.g. comp_34, comp_20..."
+    },
+    "role": {
+      "type": "string",
+      "pattern": "^prog[1-4]{1}$",
+      "description": "Role of the student in the delivery, as specified in the guides. Possible values: prog1, prog2, prog3 or prog4."
+    },
+    "phase": {
+      "type": "integer",
+      "enum": [1, 2],
+      "description": "Phase that is being delivered. Possible values: 1 or 2."
+    },
+    "call": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 4,
+      "description": "Call of delivery. 1 for first call, 2 for second, 3 for additional and 4 for exceptional."
+    },
+    "test": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$",
+      "description": "Git commit SHA identifier of the delivered test commit in the previously specified repo in the repo property."
+    },
+    "fusion": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$",
+      "description": "Git commit SHA identifier of the delivered fusion commit in the previously specified repo in the repo property."
+    },
+    "lab": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9,
+      "description": "Number of the laboratory assigned to student, for example 1 for laboratory L1, 2 for laboratory L2... Minimum is 1 and maximum depends on the number of laboratories implemented in the course."
+    },
+    "blocks": {
+      "type": "array",
+      "description": "Blocks implemented by the student in this delivery, as specified in this guides.",
+      "items": {
+        "type": "string",
+        "enum": ["1A", "1B", "1C", "1D", "1E", "1F", "1G", "1H", "2A", "2B", "2C", "2D", "2E", "2F", "2G", "2H", "2Ia", "2Ib", "2Ic", "2Id", "2Ja", "2Jb", "2Jc", "2Jd"]
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "name",
+    "surname",
+    "email",
+    "repo",
+    "role",
+    "phase",
+    "call",
+    "test",
+    "fusion",
+    "lab",
+    "blocks"
+  ]
+}
