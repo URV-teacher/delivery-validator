@@ -5,7 +5,7 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "First name of the student doing this delivery."
+      "description": "Name + surname of the student doing this delivery or only first name is a surname field is included too."
     },
     "surname": {
       "type": "string",
@@ -40,12 +40,12 @@
     },
     "test": {
       "type": "string",
-      "pattern": "^[0-9a-f]{40}$",
+      "pattern": "^[0-9a-f]{7,40}$",
       "description": "Git commit SHA identifier of the delivered test commit in the previously specified repo in the repo property."
     },
     "fusion": {
       "type": "string",
-      "pattern": "^[0-9a-f]{40}$",
+      "pattern": "^[0-9a-f]{7,40}$",
       "description": "Git commit SHA identifier of the delivered fusion commit in the previously specified repo in the repo property."
     },
     "lab": {
@@ -66,7 +66,6 @@
   },
   "required": [
     "name",
-    "surname",
     "email",
     "repo",
     "role",
@@ -74,7 +73,6 @@
     "call",
     "test",
     "fusion",
-    "lab",
     "blocks"
   ]
 }

@@ -29,7 +29,7 @@ def validate_json_file(file_path: str, schema: dict) -> bool:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Validate delivery JSON files.")
-    parser.add_argument("schema", help="Path to the JSON schema (schema.json)")
+    parser.add_argument("--schema", help="Path to the JSON schema (schema.json)")
     parser.add_argument("files", nargs="+", help="Path(s) to JSON file(s) to validate")
     args = parser.parse_args()
 
